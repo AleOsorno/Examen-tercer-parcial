@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen tercer parcial</title>
+    <link rel="stylesheet" href="estilo.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery/jquery-ui-1.8.17.custom.min.js"></script>
+	<script type="text/javascript" src="jspdf.js"></script>
+	<script type="text/javascript" src="jspdf.plugin.addimage.js"></script>
+	<script type="text/javascript" src="jspdf.plugin.standard_fonts_metrics.js"></script>
+	<script type="text/javascript" src="jspdf.plugin.split_text_to_size.js"></script>
+	<script type="text/javascript" src="jspdf.plugin.from_html.js"></script>
+</head>
+<body>
+    
+    <h1>Examen tipo C del tercer parcial</h1>
+    <h3>185085-Alejandro Osorno Beltrán</h3>
+
+    <img src="tabla.PNG">
+    <p>Basate en la tabla de arriba para hacer la palabra codificada</p>
+    <hr class="separador2">
+    <button onclick="escribirPalabraal()">Empieza a escribir la palabra con alert</button>
+    <p>Puedes usar el boton de arriba para hacer la actividad con alerts y prompts</p>
+    <hr class="separador">
+    <p>Empieza a escribir la palabra con un formulario, para enviar la palabra codificada presiona el boton de enviar. Recuerda llenar todos los espacios</p>
+    <form id="myform1" onsubmit="return escribirPalabrafor(event);">
+        <p>Escribe un primer numero <input id="condicion1" name="numero" type="text"> </p>
+        <p>Escribe un segundo numero <input id="condicion2" name="numero" type="text"> </p>
+        <p>Escribe un tercer numero <input id="condicion3" name="numero" type="text"> </p>
+        <p>Escribe un cuarto numero <input id="condicion4" name="numero" type="text"> </p>
+        <p>Escribe un quinto numero <input id="condicion5" name="numero" type="text"> </p>
+        <p>Escribe un sexto numero <input id="condicion6" name="numero" type="text"> </p>
+        <p>Escribe un septimo numero <input id="condicion7" name="numero" type="text"> </p>
+        <p>Escribe un octavo numero <input id="condicion8" name="numero" type="text"> </p>
+        <p>Escribe un noveno numero <input id="condicion9" name="numero" type="text"> </p>
+        <p>Escribe un decimo numero <input id="condicion10" name="numero" type="text"> </p>
+        <p><input type="submit"></p>
+    </form>
+    <hr>
+    <iframe frameborder="0" width="800" height="500"></iframe><!--Iframe del PDF-->
+
+
+
+    <script type = "text/javascript">/*Definimos que pertenece a javaScript*/
+
+        function escribirPalabraal() {//funcion que va a utilizar el primer boton para hacer todo con alert y prompt
+            let num=[];//cadena que alamacenara los numeros de la palabra codificada
+            let palabra=[];//cadena que almacenara las letras de la palabra descodificada
+            let cont=0;//variable para salir de la peticion de numeros
+            let cont2=0;//variable que cuenta cuantos numeros llevan
+
+
+            while (cont == 0) {//ciclo de peticion de 10 numeros o mas
+                let condicion = prompt("Ingresa un numero entre 0 y 25, presiona cancelar cuando hayas escrito la palabra");/*Pide un numero al usuario*/
+                let validacion = condicion;/*Agrega el numero a la variable de validación*/
+                if (validacion >= 0 && validacion <= 25 && condicion !=null && validacion !=""){/*Si validacion es menor a 0 y mayor a 25, pedira nuevamente el numero. Las demas condiciones son para que no cuente espacios innecesarios*/
+                    num.push(validacion);//agrega el numero (uno por uno) al arreglo
+                    cont2++;//se suman la cantidad de numeros que se han escritos para decirle al usuario cuantos lleva
+                }
+
+                if(validacion < 0 || validacion > 25 || validacion == ""){//si la condicion del rango no se cumple o se dejan espacios, pedira denuevo el numero
+                    alert("Debes escribir números entre el rango de 0 a 25");
+                }
+
+                if (condicion == null) {//espera a que el usuario presione el boton de cancelar
+                    if (num.length >= 10) {//si lo presiona, validara que el arreglo del num sea de 10 numeros como minimo, de lo contrario lo pedira denuevo
+                        cont = 1;//saldra del ciclo
+                    } else {
+                        alert("Debes ingresar al menos 10 números. Solo haz escrito "+cont2);
+                    }
+                }
+            }
+
+            for(let i=0;i<num.length;i++){//ciclo para leer numero por numero del arreglo de la palabra codificada hasta que i sea mayor o igual a la longitud de la cadena
+                if(num[i]==0){//cuando el numero del arreglo sea cualquiera de estos if, añadira la letra corrrespondiente al arreglo de la palabra decodificada
+                    palabra.push("A");
+                }
+                if(num[i]==1){
+                    palabra.push("B");
+                }
+                if(num[i]==2){
+                    palabra.push("C");
+                }
+                if(num[i]==3){
+                    palabra.push("D");
+                }
+                if(num[i]==4){
+                    palabra.push("E");
+                }
+                if(num[i]==5){
+                    palabra.push("F");
+                }
+                if(num[i]==6){
+                    palabra.push("G");
+                }
+                if(num[i]==7){
+                    palabra.push("H");
+                }
+                if(num[i]==8){
+                    palabra.push("I");
+                }
+                if(num[i]==9){
+                    palabra.push("J");
+                }
+                if(num[i]==10){
+                    palabra.push("K");
+                }
+                if(num[i]==11){
+                    palabra.push("L");
+                }
+                if(num[i]==12){
+                    palabra.push("M");
+                }
+                if(num[i]==13){
+                    palabra.push("N");
+                }
+                if(num[i]==14){
+                    palabra.push("O");
+                }
+                if(num[i]==15){
+                    palabra.push("P");
+                }
+                if(num[i]==16){
+                    palabra.push("Q");
+                }
+                if(num[i]==17){
+                    palabra.push("R");
+                }
+                if(num[i]==18){
+                    palabra.push("S");
+                }
+                if(num[i]==19){
+                    palabra.push("T");
+                }
+                if(num[i]==20){
+                    palabra.push("U");
+                }
+                if(num[i]==21){
+                    palabra.push("V");
+                }
+                if(num[i]==22){
+                    palabra.push("W");
+                }
+                if(num[i]==23){
+                    palabra.push("X");
+                }
+                if(num[i]==24){
+                    palabra.push("Y");
+                }
+                if(num[i]==25){
+                    palabra.push("Z");
+                }
+            }
+            var doc = new jsPDF();//Creacion de PDF
+            doc.setFontSize(20);
+            doc.text(20,10, "Resultado del mensaje codificado.");
+            doc.setFontSize(14);
+            doc.text(20, 20, "El mensaje codificado es "+num+" de "+num.length+" caracteres.");
+            doc.text(20, 30, "El mensaje descodificado es "+palabra);
+            var string = doc.output('datauristring');
+            $('iframe').attr('src', string);
+        }
+
+
+        function escribirPalabrafor(event) {//funcion por si se quiere usar un formulario en lugar de un alert
+            event.preventDefault();
+            let n1 = parseInt(document.getElementById('condicion1').value);//estas variables son de los 10 espacios que se tienen que llenar necesariamente para que la funcion funcione
+            let n2 = parseInt(document.getElementById('condicion2').value);
+            let n3 = parseInt(document.getElementById('condicion3').value);
+            let n4 = parseInt(document.getElementById('condicion4').value);
+            let n5 = parseInt(document.getElementById('condicion5').value);
+            let n6 = parseInt(document.getElementById('condicion6').value);
+            let n7 = parseInt(document.getElementById('condicion7').value);
+            let n8 = parseInt(document.getElementById('condicion8').value);
+            let n9 = parseInt(document.getElementById('condicion9').value);
+            let n10 = parseInt(document.getElementById('condicion10').value);
+            let num=[0,0,0,0,0,0,0,0,0,0];//cadena de la palabra codificada 
+
+            if(n1<0 || n1 > 25 || n2<0 || n2 > 25 || n3<0 || n3 > 25 || n4<0 || n4 > 25 || n5<0 || n5 > 25 || n6<0 || n6 > 25 || n7<0 || n7 > 25 || n8<0 || n8 > 25 || n9<0 || n9 > 25 || n10<0 || n10 > 25){
+                //si alguna variable esta fuera del rango de 0 a 25, mandara un alert que pida la correccion de numeros
+                alert("Tienes que poner numeros que esten en el rango del 0 al 25");
+            }else{// si no, se guardaran todas las variables en la cadena
+                num=[n1,n2,n3,n4,n5,n6,n7,n8,n9,n10];
+            }
+            
+            let palabra=[];//adena de palabra decodificada
+            for(let i=0;i<num.length;i++){//ciclo para leer numero por numero del arreglo de la palabra codificada hasta que i sea mayor o igual a la longitud de la cadena
+                if(num[i]==0){//cuando el numero del arreglo sea cualquiera de estos if, añadira la letra corrrespondiente al arreglo de la palabra decodificada
+                    palabra.push("A");
+                }
+                if(num[i]==1){
+                    palabra.push("B");
+                }
+                if(num[i]==2){
+                    palabra.push("C");
+                }
+                if(num[i]==3){
+                    palabra.push("D");
+                }
+                if(num[i]==4){
+                    palabra.push("E");
+                }
+                if(num[i]==5){
+                    palabra.push("F");
+                }
+                if(num[i]==6){
+                    palabra.push("G");
+                }
+                if(num[i]==7){
+                    palabra.push("H");
+                }
+                if(num[i]==8){
+                    palabra.push("I");
+                }
+                if(num[i]==9){
+                    palabra.push("J");
+                }
+                if(num[i]==10){
+                    palabra.push("K");
+                }
+                if(num[i]==11){
+                    palabra.push("L");
+                }
+                if(num[i]==12){
+                    palabra.push("M");
+                }
+                if(num[i]==13){
+                    palabra.push("N");
+                }
+                if(num[i]==14){
+                    palabra.push("O");
+                }
+                if(num[i]==15){
+                    palabra.push("P");
+                }
+                if(num[i]==16){
+                    palabra.push("Q");
+                }
+                if(num[i]==17){
+                    palabra.push("R");
+                }
+                if(num[i]==18){
+                    palabra.push("S");
+                }
+                if(num[i]==19){
+                    palabra.push("T");
+                }
+                if(num[i]==20){
+                    palabra.push("U");
+                }
+                if(num[i]==21){
+                    palabra.push("V");
+                }
+                if(num[i]==22){
+                    palabra.push("W");
+                }
+                if(num[i]==23){
+                    palabra.push("X");
+                }
+                if(num[i]==24){
+                    palabra.push("Y");
+                }
+                if(num[i]==25){
+                    palabra.push("Z");
+                }
+            }
+
+            var doc = new jsPDF();//Creacion de PDF
+            doc.setFontSize(20);
+            doc.text(20,10, "Resultado del mensaje codificado.");
+            doc.setFontSize(14);
+            doc.text(20, 20, "El mensaje codificado es "+num+" de "+num.length+" caracteres.");
+            doc.text(20, 30, "El mensaje descodificado es "+palabra);
+            var string = doc.output('datauristring');
+            $('iframe').attr('src', string);
+        }
+
+    </script>
+</body>
+</html>

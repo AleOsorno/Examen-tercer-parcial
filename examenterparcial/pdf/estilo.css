@@ -1,0 +1,42 @@
+body{
+    color: black;
+    background-color: blanchedalmond;
+    text-align: center;
+}
+
+.separador{
+    height: 10px;
+    width: 1500px;
+    background-color: rgb(255, 197, 50);
+    border-radius: 20px;
+}
+
+.separador2{
+    height: 10px;
+    width: 1500px;
+    background-color: rgb(0, 255, 0);
+    border-radius: 20px;
+}
+
+hr{
+    height: 10px;
+    width: 1500px;
+    background-color: rgb(0, 57, 243);
+    border-radius: 20px;
+}
+
+p{
+    font-size: 14px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-weight: bold;
+}
+
+button{
+    margin: 10px;
+}
+
+img{
+    height: 200px;
+    width: 800px;
+}
